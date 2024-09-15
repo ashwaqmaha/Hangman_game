@@ -1,11 +1,9 @@
-import random
 from game_manager import check_answer_correctness
 from mystery_word_generator import choose_random_missing_letters, choose_random_word
 from word_database_manager import get_words
 
-
 def hangman_start():
-    word_file = input("Words file? [empty = short_words.txt, 1 = complex_words.txt]: ")
+    word_file = input("Choose the word file difficulty:\n[Press Enter = short_words.txt, 1 = complex_words.txt]: ")
 
     if len(word_file)== 0:
         word_file = "word_collections/short_words.txt"
@@ -15,11 +13,13 @@ def hangman_start():
     words = get_words(word_file)
 
     random_word = choose_random_word(words)
-    mystery_word, random_word= choose_random_missing_letters(random_word)
-    print(f"Guess the word: {mystery_word}\n")
-    print(random_word)
-    # answer = input("Guess the missing letter: ")
-    # check_answer_correctness(answer,random_word,random_word)
+    mystery_word, answer, mysteryword_list= choose_random_missing_letters(random_word)
+    print("\nFill in the blanks by guessing letters. To quit the game, type 'exit'.")
+    print(f"The mystery word: {mystery_word}\n")
+    print(f"The answer (for testing): {answer}")
+    check_answer_correctness(mysteryword_list,answer)
+
 
 if __name__ == "__main__":
     hangman_start()
+
