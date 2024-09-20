@@ -89,6 +89,8 @@ def check_answer_correctness(mystery_word,answer):
 
     # list of user guessed letter already revealed
     used_letters = []
+
+    starting_time = time.time()
     
     # check if the user is not out of attempts 
     while attempts > 0:
@@ -124,6 +126,10 @@ def check_answer_correctness(mystery_word,answer):
             # if the whole word is revealed, congratulate user and end game
             if "_" not in mystery_word:
                 print("Congratulations! You've guessed the word correctly!")
+                end_time = time.time()
+                duration_of_game = end_time - starting_time
+                minutes, seconds = divmod(duration_of_game, 60)
+                print(f"Duration of the game: {int(minutes)} minutes and {int(seconds)} seconds.")
                 break
 
         # incorrect answer

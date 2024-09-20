@@ -16,6 +16,7 @@ def hangman_start():
     mystery_word, answer, mysteryword_list= choose_random_missing_letters(random_word)
     print("\nFill in the blanks by guessing letters. To quit the game, type 'exit'.")
     print(f"The mystery word: {mystery_word}\n")
+    print(f"The answer is : {answer}")
     check_answer_correctness(mysteryword_list,answer)
 
 
