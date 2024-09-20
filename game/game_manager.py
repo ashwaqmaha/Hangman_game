@@ -59,7 +59,7 @@ _______
 
 def correct_input(user_guess,used_letters,answer,mystery_word):
         # if the letter is in answer, tell the user they correct
-    print(f"Correct guess: {user_guess} is in the mystery word!\n")
+    print(f"Great job! The letter '{user_guess}' is in the word!\n")
     used_letters.append(user_guess)
 
     # check if there is more then one of given letter in answer and save it
@@ -139,4 +139,4 @@ def check_answer_correctness(mystery_word,answer):
 
     # if there is no more attempts left, end game
     if attempts == 0:
-        print(f"Game over! The word was {answer}. Better luck next time!")
+        print(f"Game over! The word was '{answer}'. Better luck next time!")

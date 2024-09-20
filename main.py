@@ -1,7 +1,6 @@
-import threading
-from game_manager import check_answer_correctness
-from mystery_word_generator import choose_random_missing_letters, choose_random_word
-from word_database_manager import get_words
+from game.game_manager import check_answer_correctness
+from game.mystery_word_generator import choose_random_missing_letters, choose_random_word
+from game.word_database_manager import get_words
 
 def hangman_start():
     word_file = input("Choose the word file difficulty:\n[Press Enter = short_words.txt, 1 = complex_words.txt]: ")
