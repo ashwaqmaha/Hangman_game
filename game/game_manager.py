@@ -1,4 +1,3 @@
-import threading
 import time
 
 strikes = { 6:
@@ -56,6 +55,11 @@ _______
 _______
 """}
 
+def calculate_time_duration(starting_time):
+        end_time = time.time()
+        duration_of_game = end_time - starting_time
+        minutes, seconds = divmod(duration_of_game, 60)
+        print(f"Duration of the game: {int(minutes)} minutes and {int(seconds)} seconds.")
 
 def correct_input(user_guess,used_letters,answer,mystery_word):
         # if the letter is in answer, tell the user they correct
@@ -126,10 +130,7 @@ def check_answer_correctness(mystery_word,answer):
             # if the whole word is revealed, congratulate user and end game
             if "_" not in mystery_word:
                 print("Congratulations! You've guessed the word correctly!")
-                end_time = time.time()
-                duration_of_game = end_time - starting_time
-                minutes, seconds = divmod(duration_of_game, 60)
-                print(f"Duration of the game: {int(minutes)} minutes and {int(seconds)} seconds.")
+                calculate_time_duration(starting_time)
                 break
 
         # incorrect answer
@@ -146,3 +147,4 @@ def check_answer_correctness(mystery_word,answer):
     # if there is no more attempts left, end game
     if attempts == 0:
         print(f"Game over! The word was '{answer}'. Better luck next time!")
+        calculate_time_duration(starting_time)
