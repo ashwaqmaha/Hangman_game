@@ -56,15 +56,6 @@ _______
 _______
 """}
 
-def count_down():
-
-    for remaining in range(60,0,-1):
-        print(f"Time left: {remaining} seconds", end="\r")
-        time.sleep(1)
-
-    # Clear the previous line by printing spaces
-    print(" " * 30, end="\r")  
-    print("Time up")
 
 def correct_input(user_guess,used_letters,answer,mystery_word):
         # if the letter is in answer, tell the user they correct
@@ -105,23 +96,23 @@ def check_answer_correctness(mystery_word,answer):
         user_guess = input("Guess the missing letter: ").lower()
 
         if user_guess == "exit":
-            print("Thank you for playing, bye!")
+            print("Thanks for playing! See you next time!")
             break
 
         # check if there is only one letter given and guess is a alphabete
         if len(user_guess) > 1 or not user_guess.isalpha():
-            print("Invalid input. Please guess a single letter.")
+            print("Oops! Please enter only one letter from A-Z.")
             continue
 
         # check if guess given is already used in the mystery word
         if user_guess in used_letters:
-            print(f"The letter {user_guess} is already used in mystery word")
+            print(f"You've already guessed the letter '{user_guess}'. Try a different one!")
             continue
         
         # check if the letter given by user is in the answer
         if user_guess in answer:
             if user_guess in mystery_word:
-                print(f"This letter {user_guess} is given.")
+                print(f"The letter '{user_guess}' is given.")
                 continue
 
             correct_input(user_guess,used_letters,answer,mystery_word)
@@ -144,8 +135,8 @@ def check_answer_correctness(mystery_word,answer):
             attempts -= 1
 
             # tell the user the amount of guesses left
-            print(f"Wrong guess! Attempts left: {attempts}")
+            print(f"Incorrect! You have {attempts} attempts left.")
 
     # if there is no more attempts left, end game
     if attempts == 0:
-        print("Game over! You've used all attempts.")
+        print(f"Game over! The word was {answer}. Better luck next time!")
